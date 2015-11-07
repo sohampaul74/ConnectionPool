@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource 
+		name="jdbc/connection"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://117.247.65.9:3306/wb_isgp_data_v2"
+		username="root"
+		password="dccb13a5"
+		maxActive="30"
+		maxIdle="10"
+		maxWait="40"
+		testOnBorrow="true"
+		validationQuery="SELECT 1"
+		removeAbandoned="true"
+		removeAbandonedTimeout="60"
+		logAbandoned="true"
+		minEvictableIdleTimeMilis="180000"
+		numTestsPerEvictionRun="1"
+	/>
+</Context>
