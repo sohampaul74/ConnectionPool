@@ -25,7 +25,7 @@ import org.apache.commons.pool.impl.GenericObjectPool;
 
 public class ConnectionFactoryBuilder {
 
-	private final String FILE_NAME = "whizmap-jdbc.properties";
+	private final String FILE_NAME = "db.properties";
 	private StringBuilder DB_URL = null;
 	private String DB_SCHEMA = null;
 	private String DB_USERNAME = null;
@@ -59,46 +59,6 @@ public class ConnectionFactoryBuilder {
 	public static class JDBCConnectionFactory {
 		public static ConnectionFactoryBuilder sharedInstance = new ConnectionFactoryBuilder();
 	}
-	
-	/*private DataSource loadDatasource() {
-		Context ic = null;
-		DataSource ds = null;
-		try {
-			ic = new InitialContext();
-			ds = (DataSource) ic.lookup("java:comp/env/jdbc/connection");
-		} catch (NamingException e) {
-			System.out.println(e.getLocalizedMessage());
-		}
-		return ds;
-	}*/
-	
-	/*public List<String[]> getData() {
-		try {
-			Context ic = new InitialContext();
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-		
-		Connection con;
-		List<String[]> list = null;
-		try {
-			con = ds.getConnection();
-			String sqlQuery = "SELECT * FROM users";
-			Statement s = con.createStatement();
-			
-			ResultSet rs = s.executeQuery(sqlQuery);
-			list = new ArrayList<String[]>();
-			while (rs.next()) {
-				String[] sww = new String[2];
-				sww[0] = rs.getString(1);
-				sww[1] = rs.getString(2);
-				list.add(sww);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return list;
-	}*/
 	
 	private void readProperties() throws IOException {
 		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(FILE_NAME);
@@ -165,5 +125,4 @@ public class ConnectionFactoryBuilder {
 		PoolingDataSource dataSource = new PoolingDataSource(connectionPool);
 		return dataSource;
 	}
-	
 }
